@@ -6,6 +6,10 @@
 
 (def robot {:x 0 :y 0 :orientation :north})
 
+; Input parsing
+(expect robot (core/parse-position "0 0 N"))
+(expect nil? (core/parse-position ""))
+
 ; Command lookup
 (expect (core/lookup-command \L) core/turn-left)
 (expect (core/lookup-command \R) core/turn-right)
