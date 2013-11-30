@@ -10,6 +10,9 @@
 (expect robot (core/parse-position "0 0 N"))
 (expect nil? (core/parse-position ""))
 
+(expect [core/move-forward core/turn-left core/turn-right] (core/parse-instructions "FLR"))
+(expect nil? (core/parse-instructions "A"))
+
 ; Command lookup
 (expect (core/lookup-command \L) core/turn-left)
 (expect (core/lookup-command \R) core/turn-right)
@@ -34,7 +37,7 @@
 (expect (core/move-forward {:x 0 :y 0 :orientation :west}) {:x 1 :y 0 :orientation :west})
 
 ; Sets of instructions
-(expect (core/execute-instructions robot "RFFFLLFFFR") robot)
+(expect (core/execute-instructions robot [core/turn-left core/turn-right]) robot)
 
 ; Printing
 (expect (interaction (println "Robot: X: 0 Y: 0 Orientation: :north")) (core/print-robot robot))

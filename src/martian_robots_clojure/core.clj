@@ -32,6 +32,7 @@
 
 (defn execute-instructions
   [robot instructions]
+  (println instructions)
   (reduce process-instruction robot instructions))
 
 (defn print-robot [{:keys [x y orientation]}] (println (str "Robot: X: " x " Y: " y " Orientation: " orientation)))
