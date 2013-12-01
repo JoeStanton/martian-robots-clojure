@@ -7,6 +7,9 @@
 (def robot {:x 0 :y 0 :orientation :north})
 
 ; Input parsing
+(expect {:x 20 :y 50} (core/parse-bounds "20 50"))
+(expect nil? (core/parse-bounds "50 100"))
+
 (expect robot (core/parse-position "0 0 N"))
 (expect nil? (core/parse-position ""))
 
